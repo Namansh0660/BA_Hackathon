@@ -14,6 +14,7 @@ import plotly.graph_objects as go
 import plotly.express as px
 from plotly.subplots import make_subplots
 import warnings
+import os
 
 warnings.filterwarnings("ignore")
 
@@ -396,12 +397,16 @@ PLOTLY_THEME = dict(
 # ─────────────────────────────────────────────────────────────
 @st.cache_data
 def load_data():
-    df = pd.read_csv("data.csv", index_col=0)
+    base_dir = os.path.dirname(__file__)
+    data_path = os.path.join(base_dir, "data.csv")
+    df = pd.read_csv(data_path, index_col=0)
     return df
 
 @st.cache_resource
 def load_model():
-    return joblib.load("GB.pkl")
+    base_dir = os.path.dirname(__file__)
+    model_path = os.path.join(base_dir, "GB.pkl")
+    return joblib.load(model_path)
 
 # ─────────────────────────────────────────────────────────────
 #  HELPER FUNCTIONS
