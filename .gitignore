@@ -39,3 +39,7 @@ data/raw/
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# Extracted Scripts
+extracted_code.py
+extracted_utf8.py
